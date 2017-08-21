@@ -25,7 +25,40 @@ var articleOne = {
             Article One - Content Writing. This is the first article content
         </p>`
 } ;
-var htmlTemplate;
+function createTemplate(data)
+{
+    var title = data.title;
+    var heading = data.heading;
+    var date = data.date;
+    var content = date.content;
+var htmlTemplate = `
+<html>
+ <head>
+     <title>
+         ${title}
+     </title>
+     <meta name="viewport" content="width=device-width, initial-scale=1" />
+     <link href="/ui/style.css" rel="stylesheet" />
+ </head>   
+<body>
+    <div class="container">
+        <a href="/"> Home</a>
+    </div>
+    <hr/>
+    <h3>
+       ${heading}
+    </h3>
+    <div>
+    ${date}
+    </div>
+    <div>
+       ${content}
+    </div>
+</body>
+</html>`
+ ;
+ return htmlTemplate(articleOne);
+}
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
