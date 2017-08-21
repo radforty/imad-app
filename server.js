@@ -83,7 +83,7 @@ var htmlTemplate = `
 </body>
 </html>`
  ;
- return htmlTemplate(articleOne);
+ return htmlTemplate(articleName);
 }
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
