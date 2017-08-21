@@ -5,11 +5,95 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+var articles = {
+'article-one' : { title : 'Article by Radhika',
+    heading : 'Article One',
+    date : 'Aug 15 2017',
+    content :`<p>
+            Article One - Content Writing. This is the first article content.
+            Article One - Content Writing. This is the first article content
+            Article One - Content Writing. This is the first article content
+        </p>
+         <p>
+            Article One - Content Writing. This is the first article content.
+            Article One - Content Writing. This is the first article content
+            Article One - Content Writing. This is the first article content
+        </p>
+         <p>
+            Article One - Content Writing. This is the first article content.
+            Article One - Content Writing. This is the first article content
+            Article One - Content Writing. This is the first article content
+        </p>`},
+
+'article-two' :  {title : 'Article by Radhika',
+    heading : 'Article Two',
+    date : 'Aug 18 2017',
+    content : 
+       ` <p>
+            Article Two - Content Writing. This is the second article content.
+           Article Two - Content Writing. This is the second article content.
+           Article Two - Content Writing. This is the second article content.
+        </p>
+         <p>
+           Article Two - Content Writing. This is the second article content.
+           Article Two - Content Writing. This is the second article content.
+           Article Two - Content Writing. This is the second article content.
+        </p>
+         <p>
+         Article Two - Content Writing. This is the second article content.
+        </p>`
+},
+'article-three' : {title : 'Article by Radhika',
+    heading : 'Article Three',
+    date : 'Aug 21 2017',
+    content : 
+       ` <p> Article Three - Content Writing. This is the third article content.
+           Article Three - Content Writing. This is the third article content.
+           Article Three - Content Writing. This is the third article content.
+        </p>`}
+};
+function createTemplate(data)
+{
+    var title = data.title;
+    var heading = data.heading;
+    var date = data.date;
+    var content = data.content;
+var htmlTemplate = `
+<html>
+ <head>
+     <title>
+         ${title}
+     </title>
+     <meta name="viewport" content="width=device-width, initial-scale=1" />
+     <link href="/ui/style.css" rel="stylesheet" />
+ </head>   
+<body>
+    <div class="container">
+        <a href="/"> Home</a>
+    </div>
+    <hr/>
+    <h3>
+       ${heading}
+    </h3>
+    <div>
+    ${date}
+    </div>
+    <div>
+       ${content}
+    </div>
+</body>
+</html>`
+ ;
+ return htmlTemplate;
+}
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-
-app.get('/ui/style.css', function (req, res) {
+app.get('/:articleName', function (req, res) {
+    var articleName = req.params.articleName;
+   res.send(createTemplate(articles[articleName]));
+});
+app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
 
