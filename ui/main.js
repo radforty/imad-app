@@ -18,6 +18,6 @@ button.onclick = function(){
     //not done yet
     };
     //make the request
-    request.open('GET', 'helloradhika.imad.hasura-app.io/counter', true);
+    request.open('GET', 'http://helloradhika.imad.hasura-app.io/counter', true);
     request.send(null);
 };
