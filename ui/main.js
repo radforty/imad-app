@@ -1,7 +1,7 @@
 //counter code
 var button = document.getElementById('counter');
 var counter = 0;
-button.onClick = function(){
+button.onclick = function(){
     //make a request to the counter end point
     
     //capture the response and store it in a variable
