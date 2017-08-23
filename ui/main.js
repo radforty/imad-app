@@ -1,7 +1,7 @@
 //counter code
 var button = document.getElementById('counter');
 button.onclick = function(){
-    //make a request to the counter end point
+    //create a request object
     var request = new XMLHttpRequest();
     
     
@@ -17,4 +17,7 @@ button.onclick = function(){
     }
     //not done yet
     };
+    //make the request
+    request.open('GET', 'helloradhika.imad.hasura-app.io/counter', true);
+    request.send(null);
 };
