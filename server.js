@@ -128,7 +128,7 @@ app.get('/submit-name', function(req,res){ // URL Submit-name/name:xxxx
 app.get('articles/:articleName', function (req, res) {
     //articleName=article-one
     //select * from article where heading='Article One'
-    pool.query("SELECT * FROM article where heading ='"+ req.params.articleName +"'", function(err, result){
+    pool.query("SELECT * FROM article where heading ='+ req.params.articleName +', function(err, result){
              if(err){
                  res.status(500).send(err.toString());
              }
