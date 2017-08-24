@@ -65,6 +65,8 @@ function createTemplate(data)
     var heading = data.heading;
     var date = data.date;
     var content = data.content;
+    var author_id = data.author_id;
+    var category = data.category;
 var htmlTemplate = `
 <html>
  <head>
@@ -84,6 +86,12 @@ var htmlTemplate = `
     </h3>
     <div>
     ${date}
+    </div>
+     <div>
+    ${author_id}
+    </div>
+     <div>
+    ${category}
     </div>
     <div>
        ${content}
