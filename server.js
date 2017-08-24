@@ -10,7 +10,6 @@ var config = {
     password:'process.env.DB_PASSWORD'
 };
 
-
 var app = express();
 app.use(morgan('combined'));
 var articles = {
@@ -100,6 +99,15 @@ app.get('/', function (req, res) {
 app.get('/test-db', function (req, res) {
   //make a select request
   //return a response results
+  pool.query("SELECT * FROM test", function(err, result){
+             if(err){
+                 res.status(500).send(err.toString());
+             }
+      else
+      {
+            res.send(JSON.stringify(result));
+      }
+});
 });
 var counter = 0;
 app.get('/counter', function (req, res) {
