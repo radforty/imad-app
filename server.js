@@ -161,8 +161,12 @@ var username = req.body.username;
                                        var salt= dbString.split('$')[2];
                                        var hashedPassword = hash(password,salt); //creating a password based on the password submitted and the original salt
                                                   if (hashedPassword === dbString){
-                                                  res.send('user created successfully' + username);
+                                                  res.send('user credentials are correct!');
                                                      }
+                                                    else
+                                                    {
+                                                         res.send(403).send('username/password is         invalid');
+                                                    }
                                         }
                                    }
                               });
