@@ -106,7 +106,7 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-function hash(input,salt){
+function hash(input, salt){
     //how do we create a hash
     var hashed = crypto.pbkdf2Sync(input,salt,10000,512,'shah512');
     return hashed.toString('hex');
@@ -151,7 +151,7 @@ app.get('/submit-name', function(req,res){ // URL Submit-name/name:xxxx
 app.get('/articles/:articleName', function (req, res) {
     //articleName=article-one
     //select * from article where title ='article-one'
-    pool.query("SELECT * FROM article where title = '" + req.params.articleName + "'", function(err, result){
+    pool.query("SELECT * FROM article where title = $1'", [req.params.articleName], function(err, result){
              if(err){
                  res.status(500).send(err.toString());
              }
