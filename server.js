@@ -3,6 +3,8 @@ var morgan = require('morgan');
 var path = require('path');
 var Pool = require('pg').Pool;
 var crypto = require('crypto');
+var bodyParser = require('body-parser');
+
 var config = {
     user:'helloradhika',
     database:'helloradhika',
@@ -13,6 +15,7 @@ var config = {
 
 var app = express();
 app.use(morgan('combined'));
+app.use(bodyParser.json());
 var articles = {
 'article-one' : { title : 'Article by Radhika',
     heading : 'Article One',
@@ -120,6 +123,7 @@ app.get('/hash/:input', function (req, res){
 
 app.post('/create-user', function(req, res){
     //create username and password
+    //"username" : "helloradhika", "password" : "password"
     //JSON
     var username = req.body.username;
     var password = req.body.password;
