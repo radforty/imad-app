@@ -29,8 +29,8 @@ submit.onclick=function(){
                    }
          };
          var nameInput = document.getElementById('name');
-         var username = getElementById('username').value;
-         var password = getElementById('password').value;
+         var username = document.getElementById('username').value;
+         var password = document.getElementById('password').value;
          console.log(username);
           console.log(password);
           request.open('POST', 'http://helloradhika.imad.hasura-app.io/login', true);
